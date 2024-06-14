@@ -65,9 +65,6 @@
 import itemChart from "../../components/MainBox/itemChart.vue"
 
 
-  
-
-  
 
 </script>
 

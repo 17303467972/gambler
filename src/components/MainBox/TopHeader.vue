@@ -22,11 +22,12 @@
       </template>
       <template  v-for="item in data.children" :key="item.path">
 
-        <el-menu-item :index="item.path" v-if="item.path">
-        </el-menu-item>
-      <span>
+      <el-menu-item :index="item.path" v-if="item.path">
+        <span>
         {{ item.title }}
       </span>
+        </el-menu-item>
+      
       </template>
       
     </el-sub-menu>
@@ -35,6 +36,8 @@
 
       <span>{{ data.title }}</span>
     </el-menu-item>
+
+
   </template>
   <span style="position: absolute;right: 70px;margin-top: 20px;margin-bottom: 20px;">欢迎{{user.username}}回来</span>
 
