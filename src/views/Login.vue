@@ -6,7 +6,7 @@
                    
 
     <div class="formContainer">
-        <h3>智慧家居管理系统</h3>
+        <h3>节能安全用电系统</h3>
         <el-form
     ref="ruleFormRef"
     style="max-width: 600px"

@@ -43,16 +43,9 @@
 
 
    <div class="container">
-    <section class="itemChart">
-      <itemChart>
+    
+      <itemChart />
 
-
-      </itemChart>
-
-
-
-
-    </section>
 
    </div>
     
@@ -75,7 +68,7 @@ height: inherit;
 width: inherit;
 margin-top: 30px;
 padding: 10px 20px ;
-background-color: gray;
+// background-color: gray;
 
 }
 
