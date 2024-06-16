@@ -99,7 +99,8 @@ const handleLogin1 = ()=>{
                 "/right-manage",
                 "/right-manage/rightlist",
                 "/device-manage",
-                "/device-manage/devicelist"
+                "/device-manage/devicelist",
+                "/device-manage/adddevice"
             ]
         }
 
@@ -120,7 +121,8 @@ const handleLogin2 = ()=>{
             "rights":[
                 "/index",
                 "/device-manage",
-                "/device-manage/devicelist"
+                "/device-manage/devicelist",
+                "/device-manage/adddevice"
             ]
         }
         }
