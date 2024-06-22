@@ -96,12 +96,9 @@
 
     </div>
 
-
+<!-- 插入表格 -->
    <div class="container">
-    
       <itemChart />
-
-
    </div>
     
     

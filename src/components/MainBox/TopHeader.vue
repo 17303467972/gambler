@@ -29,7 +29,18 @@
 
 
       </template>
-      <span style="position: absolute;right: 70px;margin-top: 20px;margin-bottom: 20px;">欢迎{{ user.username }}回来</span>
+
+      <!-- mqtt -->
+      <div>
+        <span style="position: absolute;right: 200px;margin-top: 20px;margin-bottom: 20px;">
+          欢迎{{ status.mqttConnectionStatus }}
+        </span>
+      </div>
+
+
+      <span style="position: absolute;right: 70px;margin-top: 20px;margin-bottom: 20px;">
+        欢迎{{ user.username }}回来
+      </span>
 
       <el-dropdown style="position: absolute;right: 10px;margin-top: 10px;margin-bottom: 10px;">
         <el-avatar :size="40" :src="circleUrl" />
@@ -66,12 +77,46 @@ import { useRoute } from 'vue-router';
 import { onMounted } from 'vue';
 import axios from 'axios'
 
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 
-import { ArrowDown } from '@element-plus/icons-vue'
+import { ArrowDown, SetUp } from '@element-plus/icons-vue'
+
+import mqtt from "mqtt";
+
+ const status = reactive({
+  mqttConnectionStatus: '',
+})
+
+const options = {
+  port: 8083,
+  connectTimeout: 4000, // 超时时间
+  clientId: "", // 不填默认随机生成一个ID
+};
+
+const client = mqtt.connect('ws://broker-cn.emqx.io:8083/mqtt', options)
+const subscribe_Topic = 'iot/my_sub';
+
+// 连接事件处理
+
+client.on('connect', function () {
+  status.mqttConnectionStatus = "已连接"
+  console.log('连接成功');
+  // 订阅主题
+  client.subscribe(subscribe_Topic);
+});
+
+client.on("reconnect", () => {
+  status.mqttConnectionStatus = "正在重连"
+  console.log("正在重连")
+})
+client.on("error", (error) => {
+  status.mqttConnectionStatus = "连接失败"
+  console.log("连接失败", error)
+})
+
+
 
 const route = useRoute()
-
 
 const circleUrl = "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
 
